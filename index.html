@@ -15,7 +15,11 @@
     
     <div class="results">
     <p class="computerDisplay"></p>
-    <p class="humanDisplay"></p>
+    <p class="resultsExplanation"></p>
+    <p class="roundsPlayedDisplay"></p>
+    <p class="humanWins"></p>
+    <p class="computerWins"></p>
+    <p class="tiedGames"></p>
     </div>
     
     
@@ -25,6 +29,12 @@
     const computerDisplay = document.querySelector(".computerDisplay")
     const humanInput = document.querySelector(".humanInput")
     const humanInputSubmit = document.querySelector(".humanInputSubmit")
+    const resultsExplanation = document.querySelector(".resultsExplanation")
+    const roundsPlayedDisplay = document.querySelector(".roundsPlayedDisplay")
+    const humanWins = document.querySelector(".humanWins")
+    const computerWins = document.querySelector(".computerWins")
+    const tiedGames = document.querySelector(".tiedGames")
+
 
     /* set initial scores */
     var humanScore = 0;
@@ -32,11 +42,9 @@
     var drawScore = 0;
     var roundsPlayed = 0;
 
-    /* add a reset function */
-    let playRound = true;
+    computerDisplay.textContent = "Computer: ???????"; //don't show answer too early
 
     function playRound() {
-        computerDisplay.textContent = "Computer: ???????"; //don't show answer too early
     /* getComputerChoice will randomly return rock, paper or scissors */
         function getComputerChoice() {
             return Math.floor(Math.random() * 3);
@@ -51,7 +59,8 @@
     } else if (computerChoiceOutput === 2) {
         var computerChoice = "Scissors";
     }
-
+    /* show user what the computer chose */
+    computerDisplay.textContent = "Computer: " + computerChoice
     console.log(computerChoice)
 
     /* getHumanChoice will take human choice and return it */
@@ -70,48 +79,42 @@
             alert("Sorry, I didn't understand that!");
         }    
     } else {
-        gameQuit = confirm("Do you really want to quit?");
-
-        if (gameQuit === true) {
-        } else {
-        }
+        //reedit for function
     }
 
     console.log(humanChoice)
 
-    /* keep score with humanScore and computerScore */
-
     /* drawing */
     if (computerChoice === humanChoice) {
-        alert("It's a draw!")
-        var drawScore = (+drawScore + 1)
+        resultsExplanation.textContent = "It's a draw!";
+        var drawScore = (+drawScore + 1);
     }
     /* ways of losing */    
     if ((computerChoice === "Rock" && humanChoice === "Scissors") || (
         computerChoice === "Paper" && humanChoice === "Rock") || (
         computerChoice === "Scissors" && humanChoice === "Paper")) {
-            alert(computerChoice + " beats " + humanChoice.toLowerCase() + ", you lose!")
+            resultsExplanation.textContent = computerChoice + " beats " + humanChoice.toLowerCase() + ", you lose!";
             var computerScore = (+computerScore + 1);
     /* ways of winning */
     } else if ((humanChoice === "Rock" && computerChoice === "Scissors") || (
         humanChoice === "Paper" && computerChoice === "Rock") || (
         humanChoice === "Scissors" && computerChoice === "Paper")) {
-            alert(humanChoice + " beats " + computerChoice.toLowerCase() + ", you win!")
+            resultsExplanation.textContent = humanChoice + " beats " + computerChoice.toLowerCase() + ", you win!";
             var humanScore = (+humanScore + 1);
     }
 
-    var roundsPlayed = (+roundsPlayed + 1)
+    roundsPlayed++;
 
-    console.log("The computer has " + computerScore + " point(s).");
-    console.log("You have " + humanScore + " point(s).");
-    console.log("You have drawn a total of " + drawScore + " times.")
-    /* playRound will compare humanChoice to computerChoice to determine a winner */
-
-    playRound = confirm("You have currently played " + roundsPlayed + " rounds. Do you want to play again?")
+    /* update HTML display */
+    roundsPlayedDisplay.textContent = "You have played " + roundsPlayed + " rounds."
+    humanWins.textContent = "You have " + humanScore + " point(s).";
+    computerWins.textContent = "The computer has " + computerScore + " point(s).";
+    tiedGames.textContent = "You have drawn a total of " + drawScore + " times.";
     }
 
     /*start game */
     humanInputSubmit.addEventListener("click", playRound)
+    
 </script>
 
 </body>
