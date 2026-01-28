@@ -45,10 +45,27 @@ if (getHumanChoice != "" && getHumanChoice != null) {
     alert("Looks like you don't want to play any more!")
 }
 
-
-
 console.log(humanChoice)
+
 /* keep score with humanScore and computerScore */
+let humanScore;
+let computerScore;
+
+/* drawing */
+if (computerChoice === humanChoice) {
+    alert("It's a draw!")
+}
+/* ways of losing */    
+if ((computerChoice === "Rock" && humanChoice === "Scissors") || (
+    computerChoice === "Paper" && humanChoice === "Rock") || (
+    computerChoice === "Scissors" && humanChoice === "Paper")) {
+        alert(computerChoice + " beats " + humanChoice.toLowerCase() + ", you lose!")
+/* ways of winning */
+} else if ((humanChoice === "Rock" && computerChoice === "Scissors") || (
+    humanChoice === "Paper" && computerChoice === "Rock") || (
+    humanChoice === "Scissors" && computerChoice === "Paper")) {
+        alert(humanChoice + " beats " + computerChoice.toLowerCase() + ", you win!")
+    }
 /* playRound will compare humanChoice to computerChoice to determine a winner */
 
 
