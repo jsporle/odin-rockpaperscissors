@@ -6,7 +6,24 @@
     <title>Let's Play Rock Paper Scissors</title>
 </head>
 <body>
+    <h1>Rock, Paper, Scissors</h1>
+    <div class="input">
+        <label for="humanInput">Rock, Paper or Scissors?</label>
+        <input type="text" id="humanInput" class="humanInput" />
+        <input type="submit" value="Ready!" class="humanInputSubmit" />
+    </div>
+    
+    <div class="results">
+    <p class="computerDisplay"></p>
+    <p class="humanDisplay"></p>
+    </div>
+    
+    
+    
     <script>
+/* set HTML constants */
+const computerDisplay = document.querySelector(".computerDisplay")
+const humanInput = document.querySelector(".humanInput")
 /* set initial scores */
 var humanScore = 0;
 var computerScore = 0;
@@ -17,6 +34,7 @@ var roundsPlayed = 0;
 let playRound = true;
 
 while (playRound) {
+    computerDisplay.textcontent = "???";
 /* getComputerChoice will randomly return rock, paper or scissors */
     function getComputerChoice() {
         return Math.floor(Math.random() * 3);
@@ -36,7 +54,7 @@ while (playRound) {
 
     /* getHumanChoice will take human choice and return it */
     var humanChoice;
-    let getHumanChoice = prompt("Rock, Paper or Scissors?", "");
+    const getHumanChoice = humanInput.value;
 
     if (getHumanChoice != "" && getHumanChoice != null) {
         let getHumanChoicefilter = getHumanChoice.toLowerCase().replaceAll(" ","");
