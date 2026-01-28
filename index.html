@@ -105,10 +105,30 @@
         roundsPlayed++; //add a round on
 
         /* update HTML display */
-        roundsPlayedDisplay.textContent = "You have played " + roundsPlayed + " rounds."
-        humanWins.textContent = "You have " + humanScore + " point(s).";
-        computerWins.textContent = "The computer has " + computerScore + " point(s).";
-        tiedGames.textContent = "You have drawn a total of " + drawScore + " times.";
+        if (roundsPlayed === 1) { //for grammatical consistency
+            roundsPlayedDisplay.textContent = "You have played 1 round.";
+        } else {
+            roundsPlayedDisplay.textContent = "You have played " + roundsPlayed + " rounds.";
+        }
+        
+        if (humanScore ===1 ) {
+            humanWins.textContent = "You have 1 point.";
+        } else {
+            humanWins.textContent = "You have " + humanScore + " points.";
+        }
+        
+        if (computerScore === 1) {
+            computerWins.textContent = "The computer has 1 point.";
+        } else {
+            computerWins.textContent = "The computer has " + computerScore + " points.";
+        }
+        
+        if (drawScore === 1) {
+            tiedGames.textContent = "You have drawn once.";
+        } else {
+            tiedGames.textContent = "You have drawn a total of " + drawScore + " times.";
+        }
+        
     }
 
     /*start game */
