@@ -28,17 +28,24 @@ console.log(computerChoice)
 /* getHumanChoice will take human choice and return it */
 var humanChoice;
 let getHumanChoice = prompt("Rock, Paper or Scissors?", "");
-let getHumanChoicefilter = getHumanChoice.toLowerCase();
 
-if (getHumanChoicefilter === "rock") {
-    var humanChoice = "Rock";
-} else if (getHumanChoicefilter === "paper") {
-    var humanChoice = "Paper";
-} else if (getHumanChoicefilter === "scissors") {
-    var humanChoice = "Scissors";
+if (getHumanChoice != "" && getHumanChoice != null) {
+    let getHumanChoicefilter = getHumanChoice.toLowerCase().replaceAll(" ","");
+    
+    if (getHumanChoicefilter === "rock") {
+        var humanChoice = "Rock";
+    } else if (getHumanChoicefilter === "paper") {
+        var humanChoice = "Paper";
+    } else if (getHumanChoicefilter === "scissors") {
+        var humanChoice = "Scissors";
+    } else {
+        alert("Sorry, I didn't understand that!");
+    }
 } else {
-    alert("Sorry, I didn't understand that!");
+    alert("Looks like you don't want to play any more!")
 }
+
+
 
 console.log(humanChoice)
 /* keep score with humanScore and computerScore */
