@@ -50,66 +50,65 @@
             return Math.floor(Math.random() * 3);
         }
 
-    var computerChoiceOutput = getComputerChoice();
+        var computerChoiceOutput = getComputerChoice();
 
-    if (computerChoiceOutput === 0) {
-        var computerChoice = "Rock";
-    } else if (computerChoiceOutput === 1) {
-        var computerChoice = "Paper";
-    } else if (computerChoiceOutput === 2) {
-        var computerChoice = "Scissors";
-    }
-    /* show user what the computer chose */
-    computerDisplay.textContent = "Computer: " + computerChoice
-    console.log(computerChoice)
+        if (computerChoiceOutput === 0) {
+            var computerChoice = "Rock";
+        } else if (computerChoiceOutput === 1) {
+            var computerChoice = "Paper";
+        } else if (computerChoiceOutput === 2) {
+            var computerChoice = "Scissors";
+        }
 
-    /* getHumanChoice will take human choice and return it */
-    var humanChoice;
-    const getHumanChoice = humanInput.value;
+        /* getHumanChoice will take human choice and return it */
+        var humanChoice;
+        const getHumanChoice = humanInput.value;
 
-    if (getHumanChoice != "" && getHumanChoice != null) {
-        let getHumanChoicefilter = getHumanChoice.toLowerCase().replaceAll(" ","");
-        if (getHumanChoicefilter === "rock") {
-            var humanChoice = "Rock";
-        } else if (getHumanChoicefilter === "paper") {
-            var humanChoice = "Paper";
-        } else if (getHumanChoicefilter === "scissors") {
-            var humanChoice = "Scissors";
-        } else {
-            alert("Sorry, I didn't understand that!");
-        }    
-    } else {
-        //reedit for function
-    }
+        if (getHumanChoice != "" && getHumanChoice != null) {
+            let getHumanChoicefilter = getHumanChoice.toLowerCase().replaceAll(" ","");
+            if (getHumanChoicefilter === "rock") {
+                var humanChoice = "Rock";
+            } else if (getHumanChoicefilter === "paper") {
+                var humanChoice = "Paper";
+            } else if (getHumanChoicefilter === "scissors") {
+                var humanChoice = "Scissors";
+            } else {
+                alert("Sorry, I didn't catch that!");
+                return;
+            }
+        } else { //no human entry
+            alert("Sorry, I didn't catch that!");
+            return;
+        }
+        
+        /* show user what the computer chose */
+        computerDisplay.textContent = "Computer: " + computerChoice
+        console.log(computerChoice)
 
-    console.log(humanChoice)
+        if (computerChoice === humanChoice) { // drawing
+            resultsExplanation.textContent = "It's a draw!";
+            drawScore++;
+        } else if ( // ways of losing    
+            (computerChoice === "Rock" && humanChoice === "Scissors") || (
+            computerChoice === "Paper" && humanChoice === "Rock") || (
+            computerChoice === "Scissors" && humanChoice === "Paper")) {
+                resultsExplanation.textContent = computerChoice + " beats " + humanChoice.toLowerCase() + ", you lose!";
+                computerScore++;
+        } else if ( // ways of winning
+            (humanChoice === "Rock" && computerChoice === "Scissors") || (
+            humanChoice === "Paper" && computerChoice === "Rock") || (
+            humanChoice === "Scissors" && computerChoice === "Paper")) {
+                resultsExplanation.textContent = humanChoice + " beats " + computerChoice.toLowerCase() + ", you win!";
+                humanScore++;
+        }
 
-    /* drawing */
-    if (computerChoice === humanChoice) {
-        resultsExplanation.textContent = "It's a draw!";
-        var drawScore = (+drawScore + 1);
-    }
-    /* ways of losing */    
-    if ((computerChoice === "Rock" && humanChoice === "Scissors") || (
-        computerChoice === "Paper" && humanChoice === "Rock") || (
-        computerChoice === "Scissors" && humanChoice === "Paper")) {
-            resultsExplanation.textContent = computerChoice + " beats " + humanChoice.toLowerCase() + ", you lose!";
-            var computerScore = (+computerScore + 1);
-    /* ways of winning */
-    } else if ((humanChoice === "Rock" && computerChoice === "Scissors") || (
-        humanChoice === "Paper" && computerChoice === "Rock") || (
-        humanChoice === "Scissors" && computerChoice === "Paper")) {
-            resultsExplanation.textContent = humanChoice + " beats " + computerChoice.toLowerCase() + ", you win!";
-            var humanScore = (+humanScore + 1);
-    }
+        roundsPlayed++; //add a round on
 
-    roundsPlayed++;
-
-    /* update HTML display */
-    roundsPlayedDisplay.textContent = "You have played " + roundsPlayed + " rounds."
-    humanWins.textContent = "You have " + humanScore + " point(s).";
-    computerWins.textContent = "The computer has " + computerScore + " point(s).";
-    tiedGames.textContent = "You have drawn a total of " + drawScore + " times.";
+        /* update HTML display */
+        roundsPlayedDisplay.textContent = "You have played " + roundsPlayed + " rounds."
+        humanWins.textContent = "You have " + humanScore + " point(s).";
+        computerWins.textContent = "The computer has " + computerScore + " point(s).";
+        tiedGames.textContent = "You have drawn a total of " + drawScore + " times.";
     }
 
     /*start game */
