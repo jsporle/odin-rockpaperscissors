@@ -116,7 +116,7 @@
             roundsPlayedDisplay.textContent = "You have played " + roundsPlayed + " rounds.";
         }
         
-        if (humanScore ===1 ) {
+        if (humanScore === 1 ) {
             humanWins.textContent = "You have 1 point.";
         } else {
             humanWins.textContent = "You have " + humanScore + " points.";
@@ -128,7 +128,9 @@
             computerWins.textContent = "The computer has " + computerScore + " points.";
         }
         
-        if (drawScore === 1) {
+        if (drawScore === 0) {
+            tiedGames.textContent = "You haven't drawn yet.";
+        } else if (drawScore === 1) {
             tiedGames.textContent = "You have drawn once.";
         } else {
             tiedGames.textContent = "You have drawn a total of " + drawScore + " times.";
