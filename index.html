@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Rock, Paper, Scissors</h1>
+
+    <div class = description>It's the classic game of rock, paper, scissors. Type in your selection and click "Ready!" to see if you can beat the computer!</div>
+
     <div class="input">
         <label for="humanInput">You: </label>
         <input type="text" id="humanInput" class="humanInput" />
@@ -83,7 +86,6 @@
         
         /* show user what the computer chose */
         computerDisplay.textContent = "Computer: " + computerChoice
-        console.log(computerChoice)
 
         if (computerChoice === humanChoice) { // drawing
             resultsExplanation.textContent = "It's a draw!";
