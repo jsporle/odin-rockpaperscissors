@@ -7,7 +7,22 @@
 </head>
 <body>
     <script>
+/* getComputerChoice will randomly return rock, paper or scissors */
 
+function getComputerChoice() {
+    return Math.floor(Math.random() * 3);
+}
+
+    if (getComputerChoice() == 0) {
+           return computerChoice(Rock);
+    } else if (getComputerChoice() == 1) {
+           return computerChoice(Paper);
+    } else if (getComputerChoice() == 2) {
+           return computerChoice(Scissors);
+    }
+/* getHumanChoice will take human choice and return it */
+/* keep score with humanScore and computerScore */
+/* playRound will compare humanChoice to computerChoice to determine a winner */
 
 
     </script>
