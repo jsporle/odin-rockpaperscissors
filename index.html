@@ -8,7 +8,7 @@
 <body>
     <h1>Rock, Paper, Scissors</h1>
     <div class="input">
-        <label for="humanInput">Rock, Paper or Scissors?</label>
+        <label for="humanInput">You: </label>
         <input type="text" id="humanInput" class="humanInput" />
         <input type="submit" value="Ready!" class="humanInputSubmit" />
     </div>
@@ -20,25 +20,27 @@
     
     
     
-    <script>
-/* set HTML constants */
-const computerDisplay = document.querySelector(".computerDisplay")
-const humanInput = document.querySelector(".humanInput")
-/* set initial scores */
-var humanScore = 0;
-var computerScore = 0;
-var drawScore = 0;
-var roundsPlayed = 0;
+<script>
+    /* set HTML constants */
+    const computerDisplay = document.querySelector(".computerDisplay")
+    const humanInput = document.querySelector(".humanInput")
+    const humanInputSubmit = document.querySelector(".humanInputSubmit")
 
-/* add a reset function */
-let playRound = true;
+    /* set initial scores */
+    var humanScore = 0;
+    var computerScore = 0;
+    var drawScore = 0;
+    var roundsPlayed = 0;
 
-while (playRound) {
-    computerDisplay.textcontent = "???";
-/* getComputerChoice will randomly return rock, paper or scissors */
-    function getComputerChoice() {
-        return Math.floor(Math.random() * 3);
-    }
+    /* add a reset function */
+    let playRound = true;
+
+    function playRound() {
+        computerDisplay.textContent = "Computer: ???????"; //don't show answer too early
+    /* getComputerChoice will randomly return rock, paper or scissors */
+        function getComputerChoice() {
+            return Math.floor(Math.random() * 3);
+        }
 
     var computerChoiceOutput = getComputerChoice();
 
@@ -66,14 +68,12 @@ while (playRound) {
             var humanChoice = "Scissors";
         } else {
             alert("Sorry, I didn't understand that!");
-        }
+        }    
     } else {
         gameQuit = confirm("Do you really want to quit?");
 
         if (gameQuit === true) {
-            break;
         } else {
-            continue;
         }
     }
 
@@ -108,9 +108,11 @@ while (playRound) {
     /* playRound will compare humanChoice to computerChoice to determine a winner */
 
     playRound = confirm("You have currently played " + roundsPlayed + " rounds. Do you want to play again?")
-}
-alert("Thanks for playing!")
-    </script>
+    }
+
+    /*start game */
+    humanInputSubmit.addEventListener("click", playRound)
+</script>
 
 </body>
 </html>
