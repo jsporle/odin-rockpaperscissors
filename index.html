@@ -7,10 +7,11 @@
 </head>
 <body>
     <script>
-/* set initial score */
+/* set initial scores */
 var humanScore = 0;
 var computerScore = 0;
 var drawScore = 0;
+var roundsPlayed = 0;
 
 /* add a reset function */
 let playRound = true;
@@ -81,12 +82,14 @@ while (playRound) {
             var humanScore = (+humanScore + 1);
     }
 
+    ver roundsPlayed = (+roundsPlayed + 1)
+
     console.log("The computer has " + computerScore + " point(s).");
     console.log("You have " + humanScore + " point(s).");
     console.log("You have drawn a total of " + drawScore + " times.")
     /* playRound will compare humanChoice to computerChoice to determine a winner */
 
-    playRound = confirm("Do you want to play again?")
+    playRound = confirm("You have currently played " + roundsPlayed + " rounds. Do you want to play again?")
 }
 alert("Thanks for playing!")
     </script>
