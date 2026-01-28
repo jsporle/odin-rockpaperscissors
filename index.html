@@ -7,6 +7,10 @@
 </head>
 <body>
     <script>
+
+
+/* add a reset function */
+
 /* getComputerChoice will randomly return rock, paper or scissors */
 
 function getComputerChoice() {
@@ -48,8 +52,8 @@ if (getHumanChoice != "" && getHumanChoice != null) {
 console.log(humanChoice)
 
 /* keep score with humanScore and computerScore */
-let humanScore;
-let computerScore;
+var humanScore = 0;
+var computerScore = 0;
 
 /* drawing */
 if (computerChoice === humanChoice) {
@@ -60,12 +64,17 @@ if ((computerChoice === "Rock" && humanChoice === "Scissors") || (
     computerChoice === "Paper" && humanChoice === "Rock") || (
     computerChoice === "Scissors" && humanChoice === "Paper")) {
         alert(computerChoice + " beats " + humanChoice.toLowerCase() + ", you lose!")
+        var computerScore = computerScore + 1;
 /* ways of winning */
 } else if ((humanChoice === "Rock" && computerChoice === "Scissors") || (
     humanChoice === "Paper" && computerChoice === "Rock") || (
     humanChoice === "Scissors" && computerChoice === "Paper")) {
         alert(humanChoice + " beats " + computerChoice.toLowerCase() + ", you win!")
+        var humanScore = (humanScore + 1);
     }
+
+console.log("The computer has " + computerScore + " point(s).");
+console.log("You have " + humanScore + " point(s).");
 /* playRound will compare humanChoice to computerChoice to determine a winner */
 
 
