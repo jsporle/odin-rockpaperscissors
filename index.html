@@ -9,13 +9,14 @@
 <body>
     <h1>Rock, Paper, Scissors</h1>
 
-    <div class = description>It's the classic game of rock, paper, scissors. Type in your selection and click "Ready!" to see if you can beat the computer!</div>
+    <div class = description>It's the classic game of rock, paper, scissors. Choose your option and see if you can beat the computer!</div>
 
     <div class="input">
         <label for="humanInput">You: </label>
         <div class="boxandbutton">
-            <input type="text" id="humanInput" class="humanInput" />
-            <input type="submit" value="Ready!" class="humanInputSubmit" />
+            <button class="playerRock">Rock</button> 
+            <button class="playerPaper">Paper</button>
+            <button class="playerScissors">Scissors</button>
         </div>
         <p class="computerDisplay"></p>
     </div>
@@ -32,61 +33,41 @@
     
 <script>
     /* set HTML constants */
-    const computerDisplay = document.querySelector(".computerDisplay")
-    const humanInput = document.querySelector(".humanInput")
-    const humanInputSubmit = document.querySelector(".humanInputSubmit")
-    const resultsExplanation = document.querySelector(".resultsExplanation")
-    const roundsPlayedDisplay = document.querySelector(".roundsPlayedDisplay")
-    const humanWins = document.querySelector(".humanWins")
-    const computerWins = document.querySelector(".computerWins")
-    const tiedGames = document.querySelector(".tiedGames")
+    const computerDisplay = document.querySelector(".computerDisplay");
+    const playerRock = document.querySelector(".playerRock");
+    const playerPaper = document.querySelector(".playerPaper");
+    const playerScissors = document.querySelector(".playerScissors");
+    const resultsExplanation = document.querySelector(".resultsExplanation");
+    const roundsPlayedDisplay = document.querySelector(".roundsPlayedDisplay");
+    const humanWins = document.querySelector(".humanWins");
+    const computerWins = document.querySelector(".computerWins");
+    const tiedGames = document.querySelector(".tiedGames");
 
 
     /* set initial scores */
-    var humanScore = 0;
-    var computerScore = 0;
-    var drawScore = 0;
-    var roundsPlayed = 0;
+    let humanScore = 0;
+    let computerScore = 0;
+    let drawScore = 0;
+    let roundsPlayed = 0;
 
     computerDisplay.textContent = "Computer: ???????"; //don't show answer too early
 
-    function playRound() {
+    function playRound(humanChoice) {
     /* getComputerChoice will randomly return rock, paper or scissors */
         function getComputerChoice() {
             return Math.floor(Math.random() * 3);
         }
 
-        var computerChoiceOutput = getComputerChoice();
+        let computerChoiceOutput = getComputerChoice();
 
         if (computerChoiceOutput === 0) {
-            var computerChoice = "Rock";
+             computerChoice = "Rock";
         } else if (computerChoiceOutput === 1) {
             var computerChoice = "Paper";
         } else if (computerChoiceOutput === 2) {
             var computerChoice = "Scissors";
         }
 
-        /* getHumanChoice will take human choice and return it */
-        var humanChoice;
-        const getHumanChoice = humanInput.value;
-
-        if (getHumanChoice != "" && getHumanChoice != null) {
-            let getHumanChoicefilter = getHumanChoice.toLowerCase().replaceAll(" ","");
-            if (getHumanChoicefilter === "rock") {
-                var humanChoice = "Rock";
-            } else if (getHumanChoicefilter === "paper") {
-                var humanChoice = "Paper";
-            } else if (getHumanChoicefilter === "scissors") {
-                var humanChoice = "Scissors";
-            } else {
-                alert("Sorry, I didn't catch that!");
-                return;
-            }
-        } else { //no human entry
-            alert("Sorry, I didn't catch that!");
-            return;
-        }
-        
         /* show user what the computer chose */
         computerDisplay.textContent = "Computer: " + computerChoice
 
@@ -138,8 +119,10 @@
         
     }
 
-    /*start game */
-    humanInputSubmit.addEventListener("click", playRound)
+    /*start game when clicking one of the buttons*/
+    playerRock.addEventListener("click", () => playRound("Rock"));
+    playerPaper.addEventListener("click", () => playRound("Paper"));
+    playerScissors.addEventListener("click", () => playRound ("Scissors"));
     
 </script>
 
