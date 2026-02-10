@@ -9,7 +9,7 @@
 <body>
     <h1>Rock, Paper, Scissors</h1>
 
-    <div class = description>It's the classic game of rock, paper, scissors. Choose your option and see if you can beat the computer!</div>
+    <div class = description>It's the classic game of rock, paper, scissors. Choose your option and see if you can beat the computer - first to five points wins!</div>
 
     <div class="input">
         <label for="humanInput">You: </label>
@@ -44,11 +44,26 @@
     const tiedGames = document.querySelector(".tiedGames");
 
 
-    /* set initial scores */
-    let humanScore = 0;
-    let computerScore = 0;
-    let drawScore = 0;
-    let roundsPlayed = 0;
+/* set initial scores */
+        let humanScore = 0;
+        let computerScore = 0;
+        let drawScore = 0;
+        let roundsPlayed = 0;
+
+    
+    function resetScore(e) {
+        let humanScore = e;
+        let computerScore = e;
+        let drawScore = e;
+        let roundsPlayed = e;
+        humanWins.textContent = "You haven't won yet.";
+        computerWins.textContent = "The computer hasn't won yet.";
+        tiedGames.textContent = "You haven't drawn yet.";
+        roundsPlayedDisplay.textContent = "You haven't played any rounds yet.";
+        resultsExplanation.textContent = "Time for a new game!"
+    }
+
+    resetScore(0);
 
     computerDisplay.textContent = "Computer: ???????"; //don't show answer too early
 
@@ -115,6 +130,17 @@
             tiedGames.textContent = "You have drawn once.";
         } else {
             tiedGames.textContent = "You have drawn a total of " + drawScore + " times.";
+        }
+
+         /* announce a winner when 5 points are reached */
+        if (computerScore === 5) {
+            alert("The computer wins! Better luck next time!");
+            resetScore(0);
+        }
+
+        if (humanScore === 5) {
+            alert("You win! Congratulations!")
+            resetScore(0);
         }
         
     }
